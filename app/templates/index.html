@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dự đoán lượng điện năng tiêu thụ</title>
+</head>
+<body>
+    <h1>Dự đoán lượng điện năng tiêu thụ</h1>
+    <form method="POST">
+        <label for="lights">Lượng điện năng tiêu thụ của đèn (Wh):</label>
+        <input type="number" name="lights" id="lights" required placeholder="30" value="30"><br><br>
+
+        <label for="T1">Nhiệt độ bếp (°C):</label>
+        <input type="number" name="T1" id="T1" required placeholder="19.89" value="19.89"><br>
+        <label for="RH_1">Độ ẩm bếp (%):</label>
+        <input type="number" name="RH_1" id="RH_1" required placeholder="47.597" value="47.597"><br><br>
+
+        <label for="T2">Nhiệt độ phòng khách (°C):</label>
+        <input type="number" name="T2" id="T2" required placeholder="19.2" value="19.2"><br>
+        <label for="RH_2">Độ ẩm phòng khách (%):</label>
+        <input type="number" name="RH_2" id="RH_2" required placeholder="44.79" value="44.79"><br><br>
+
+        <label for="T3">Nhiệt độ phòng giặt (°C):</label>
+        <input type="number" name="T3" id="T3" required placeholder="19.79" value="19.79"><br>
+        <label for="RH_3">Độ ẩm phòng giặt (%):</label>
+        <input type="number" name="RH_3" id="RH_3" required placeholder="44.73" value="44.73"><br><br>
+
+        <label for="T4">Nhiệt độ phòng làm việc (°C):</label>
+        <input type="number" name="T4" id="T4" required placeholder="19" value="19"><br>
+        <label for="RH_4">Độ ẩm phòng làm việc (%):</label>
+        <input type="number" name="RH_4" id="RH_4" required placeholder="45.567" value="45.567"><br><br>
+
+        <label for="T5">Nhiệt độ phòng tắm (°C):</label>
+        <input type="number" name="T5" id="T5" required placeholder="17.167" value="17.167"><br>
+        <label for="RH_5">Độ ẩm phòng tắm (%):</label>
+        <input type="number" name="RH_5" id="RH_5" required placeholder="55.2" value="55.2"><br><br>
+
+        <label for="T6">Nhiệt độ bên ngoài nhà (phía Bắc) (°C):</label>
+        <input type="number" name="T6" id="T6" required placeholder="7.027" value="7.027"><br>
+        <label for="RH_6">Độ ẩm bên ngoài nhà (phía Bắc) (%):</label>
+        <input type="number" name="RH_6" id="RH_6" required placeholder="84.257" value="84.257"><br><br>
+
+        <label for="T7">Nhiệt độ phòng ủi (°C):</label>
+        <input type="number" name="T7" id="T7" required placeholder="17.2" value="17.2"><br>
+        <label for="RH_7">Độ ẩm phòng ủi (%):</label>
+        <input type="number" name="RH_7" id="RH_7" required placeholder="41.627" value="41.627"><br><br>
+
+        <label for="T8">Nhiệt độ phòng của con (°C):</label>
+        <input type="number" name="T8" id="T8" required placeholder="18.2" value="18.2"><br>
+        <label for="RH_8">Độ ẩm phòng của con (%):</label>
+        <input type="number" name="RH_8" id="RH_8" required placeholder="48.9" value="48.9"><br><br>
+
+        <label for="T9">Nhiệt độ phòng của ba mẹ (°C):</label>
+        <input type="number" name="T9" id="T9" required placeholder="17.033" value="17.033"><br>
+        <label for="RH_9">Độ ẩm phòng của ba mẹ (%):</label>
+        <input type="number" name="RH_9" id="RH_9" required placeholder="45.53" value="45.53"><br><br>
+
+        <label for="T_out">Nhiệt độ ngoài trời (từ trạm khí hậu gần đó) (°C):</label>
+        <input type="number" name="T_out" id="T_out" required placeholder="6.6" value="6.6"><br><br>
+
+        <label for="Press_mm_hg">Áp suất (từ trạm khí hậu gần đó) (mmHg):</label>
+        <input type="number" name="Press_mm_hg" id="Press_mm_hg" required placeholder="733.5" value="733.5"><br><br>
+
+        <label for="RH_out">Độ ẩm ngoài trời (từ trạm khí hậu gần đó) (%):</label>
+        <input type="number" name="RH_out" id="RH_out" required placeholder="92" value="92"><br><br>
+
+        <label for="Windspeed">Tốc độ gió (từ trạm khí hậu gần đó) (m/s):</label>
+        <input type="number" name="Windspeed" id="Windspeed" required placeholder="7" value="7"><br><br>
+
+        <label for="Visibility">Tầm nhìn (từ trạm khí hậu gần đó) (km):</label>
+        <input type="number" name="Visibility" id="Visibility" required placeholder="63" value="63"><br><br>
+
+        <label for="Tdewpoint">Điểm sương (từ trạm khí hậu gần đó) (°C):</label>
+        <input type="number" name="Tdewpoint" id="Tdewpoint" required placeholder="5.3" value="5.3"><br><br>
+
+        <button type="submit">Dự đoán!!!</button>
+    </form>
+    {% if prediction_LR and prediction_RF and prediction_GBM and mean_prediction %}
+        <h3>Dự đoán từ Linear Regression: {{ prediction_LR }}</h3>
+        <h3>Dự đoán từ Random Forest: {{ prediction_RF }}</h3>
+        <h3>Dự đoán từ Gradient Boosting Machine: {{ prediction_GBM }}</h3>
+        <h2>Trung bình dự đoán: {{ mean_prediction }}</h2>
+    {% endif %}
+</body>
+</html>
