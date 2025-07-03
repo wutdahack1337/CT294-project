@@ -12,9 +12,9 @@ from sklearn.model_selection import RepeatedKFold, cross_val_score
 models = {
     "LR": LinearRegression(n_jobs=-1),
     # TODO: change RF  n_estimator to optimal RMSE
-    "RF": RandomForestRegressor(n_estimators=200, n_jobs=-1, verbose=1, random_state=1337),
+    "RF": RandomForestRegressor(n_estimators=600, n_jobs=-1, verbose=1, random_state=1337),
     # TODO: change GBM n_estimator to optimal RMSE
-    "GBM": GradientBoostingRegressor(n_estimators=1200, max_depth=5, random_state=1337, verbose=1),
+    "GBM": GradientBoostingRegressor(n_estimators=5, max_depth=5, random_state=1337, verbose=1),
 }
 
 print("################################# TRAINING PROCESS #################################")

@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.metrics import mean_squared_error
 from flask import Flask, render_template, request
 
-model = joblib.load("models/RF_300.pkl")
+model = joblib.load("models/RF_600.pkl")
 
 # Test models
 print("######### Testing model to see whether it work #########")
