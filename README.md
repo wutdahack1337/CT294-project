@@ -2,6 +2,6 @@
 Applied of Machine Learning project
 
 ```
-python3 train.py
-python3 predict.py
+python3 scripts/train.py
+python3 app/predict.py
 ```

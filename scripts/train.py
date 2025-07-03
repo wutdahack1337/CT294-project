@@ -14,7 +14,7 @@ models = {
     # TODO: change RF  n_estimator to optimal RMSE
     "RF": RandomForestRegressor(n_estimators=5, n_jobs=-1, verbose=1, random_state=1337),
     # TODO: change GBM n_estimator to optimal RMSE
-    "GBM": GradientBoostingRegressor(n_estimators=5, max_depth=5, verbose=1, random_state=1337),
+    "GBM": GradientBoostingRegressor(n_estimators=5, max_depth=5, random_state=1337, verbose=1),
 }
 
 print("################################# TRAINING PROCESS #################################")
@@ -39,12 +39,12 @@ for name, model in models.items():
 
     model.fit(X_train, y_train)
     if name == "LR":
-        joblib.dump(model, f"models/{model}.pkl")
+        joblib.dump(model, f"models/{name}.pkl")
     else:
-        joblib.dump(model, f"models/{model}.pkl")
+        joblib.dump(model, f"models/{name}_{model.n_estimators}.pkl")
 
 traing_results_df = pd.DataFrame(training_results, index=["RMSE"])
-traing_results_df.to_csv(f"results/training/{models["LR"]}_{models["RF"]}_{models["GBM"]}.csv")
+traing_results_df.to_csv(f"results/training/LR_{models["RF"].n_estimators}_{models["GBM"].n_estimators}.csv")
 
 print("################################# TESTING PROCESS #################################")
 testing_df = pd.read_csv("datasets/testing.csv")
@@ -62,4 +62,4 @@ for name, model in models.items():
     print("   -> RMSE", np.round(rmse, 3))
 
 testing_results_df = pd.DataFrame(testing_results, index=["RMSE"])
-testing_results_df.to_csv(f"results/testing/{models["LR"]}_{models["RF"]}_{models["GBM"]}.csv")
+testing_results_df.to_csv(f"results/testing/LR_{models["RF"].n_estimators}_{models["GBM"].n_estimators}.csv")

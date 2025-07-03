@@ -4,9 +4,9 @@ from flask import Flask, render_template, request
 models = {
     "LR": joblib.load("models/LinearRegression(n_jobs=-1).pkl"),
     # TODO: change n_estimator
-    "RF": joblib.load("models/RandomForestRegressor(n_estimators=5, n_jobs=-1, random_state=1337, verbose=1).pkl"),
+    "RF": joblib.load("models/RF_5.pkl"),
     # TODO: change n_estimator
-    "GBM": joblib.load("models/GradientBoostingRegressor(max_depth=5, n_estimators=5, random_state=1337,                          verbose=1).pkl"),
+    "GBM": joblib.load("models/GBM_5.pkl"),
 }
 
 app = Flask(__name__)
