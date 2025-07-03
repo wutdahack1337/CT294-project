@@ -1,5 +1,5 @@
 # CT294-project
-Applied of Machine Learning project
+Predict energy use of appliances in the house.
 
 ## Unzip models
 ```
