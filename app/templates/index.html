@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dự đoán lượng điện năng tiêu thụ</title>
+    <title>Dự đoán lượng điện năng tiêu thụ trong nhà</title>
 </head>
 <body>
-    <h1>Dự đoán lượng điện năng tiêu thụ</h1>
+    <h1>Dự đoán lượng điện năng tiêu thụ trong nhà</h1>
     <form method="POST">
         <label for="lights">Lượng điện năng tiêu thụ của đèn (Wh):</label>
         <input type="number" name="lights" id="lights" required placeholder="30" value="30"><br><br>
@@ -75,11 +75,8 @@
 
         <button type="submit">Dự đoán!!!</button>
     </form>
-    {% if prediction_LR and prediction_RF and prediction_GBM and mean_prediction %}
-        <h3>Dự đoán từ Linear Regression: {{ prediction_LR }}</h3>
-        <h3>Dự đoán từ Random Forest: {{ prediction_RF }}</h3>
-        <h3>Dự đoán từ Gradient Boosting Machine: {{ prediction_GBM }}</h3>
-        <h2>Trung bình dự đoán: {{ mean_prediction }}</h2>
+    {% if prediction %}
+        <h3>Kết quả: {{ prediction }} (Wh)</h3>
     {% endif %}
 </body>
 </html>
