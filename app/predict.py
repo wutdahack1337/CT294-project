@@ -29,7 +29,7 @@ def index():
             input_data.append(float(request.form[feature]))
         
         input_data = [input_data]
-        prediction = model.predict(input_data)[0]
+        prediction = np.round(model.predict(input_data)[0], 3)
 
     return render_template('index.html', prediction=prediction)
 
