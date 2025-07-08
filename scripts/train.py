@@ -11,8 +11,8 @@ from sklearn.model_selection import RepeatedKFold, cross_val_score
 
 models = {
     "LR": LinearRegression(n_jobs=-1),
-    "RF": RandomForestRegressor(n_estimators=600, n_jobs=-1, verbose=1, random_state=1337),
-    "GBM": GradientBoostingRegressor(n_estimators=600, max_depth=5, random_state=1337, verbose=1),
+    "RF": RandomForestRegressor(n_estimators=300, max_features=18, n_jobs=-1, verbose=1, random_state=1337),
+    "GBM": GradientBoostingRegressor(n_estimators=1200, max_depth=5, random_state=1337, verbose=1),
 }
 
 print("################################# TRAINING PROCESS #################################")
