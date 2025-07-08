@@ -7,7 +7,6 @@ from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 # model evaluate
 from sklearn.metrics import mean_squared_error
-from sklearn.model_selection import RepeatedKFold, cross_val_score
 
 models = {
     "LR": LinearRegression(n_jobs=-1),
