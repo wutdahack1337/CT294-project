@@ -1,0 +1,186 @@
+\documentclass{article} % Không hỗ trợ cỡ chữ 13pt
+
+%--- Language & Font ---%
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel} % Thiết lập ngôn ngữ chính của tài liệu là tiếng Việt
+\usepackage{mathptmx}          % Font Times New Roman
+\usepackage[fontsize=13pt]{scrextend}
+
+%--- Page Layout ---%
+\usepackage[a4paper, right=2cm, left=3cm, top=2cm, bottom=2.5cm]{geometry} % Căn lề phải, trái, trên dưới
+
+%--- Typography ---%
+\usepackage{indentfirst}             % Thụt đầu dòng 
+\setlength{\parindent}{1cm}          % Thụt đầu dòng mỗi đoạn
+\setlength{\parskip}{6pt}            % Khoảng cách giữa các đoạn
+\renewcommand{\baselinestretch}{1.2} % Giãn dòng 1.2
+
+%--- Heading ---%
+\usepackage{titlesec} % Thư viện set up các kiểu chữ
+\titlespacing*{\section}{0pt}{0pt}{30pt}       % Heading 1
+\titleformat*{\section}{\fontsize{16pt}{20pt}\selectfont \bfseries \center}        % Font 16pt, in đậm, căn giữa
+\titlespacing*{\subsection}{0pt}{6pt}{0pt}    % Heading 2
+\titleformat*{\subsection}{\fontsize{14pt}{18pt}\selectfont \bfseries}             % Font 14pt, in đậm
+\titlespacing*{\subsubsection}{0pt}{6pt}{0pt} % Heading 3
+\titleformat*{\subsubsection}{\fontsize{13pt}{17pt}\selectfont \bfseries \itshape} % Font 13pt, in đậm, nghiêng
+\renewcommand{\thesubsection}{\arabic{subsection}} % Đánh số subsection dạng 1, 2, 3,...
+
+%--- Floating & graphics ---%
+\usepackage{graphicx, float}            % Chèn ảnh
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\justifying\arraybackslash}X}
+
+%--- Diagrams ---%
+\usepackage{tikz}                % Tạo khung bìa
+\usetikzlibrary{calc}            % Hỗ trợ TikZ
+
+%--- Hyperlink ---%
+\usepackage[hidelinks]{hyperref} % Tạo liên kết trong thư mục
+
+%--- Header & Footer ---%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\fontsize{10pt}{0pt}\selectfont\textbf{Đề tài:} Dự đoán mức tiêu thụ năng lượng của các thiết bị điện trong nhà}
+
+%--- ---%
+\usepackage{subfiles} % chèn các file nhỏ
+\usepackage{amsmath}
+\usepackage{ragged2e}
+
+%--- Vẽ khung bìa ---%
+\newcommand{\drawborder}{
+    \begin{tikzpicture}[overlay, remember picture]
+        \draw [line width=3pt]
+            ($ (current page.north west) + (3.0cm, -2.0cm) $)
+            rectangle
+            ($ (current page.south east) + (-2.0cm, 2.5cm) $);
+        \draw [line width=0.5pt]
+            ($ (current page.north west) + (3.1cm, -2.1cm) $)
+            rectangle
+            ($ (current page.south east) + (-2.1cm, 2.6cm) $);
+    \end{tikzpicture}
+}
+
+%--- Các thông tin ở trang bìa ---%
+\newcommand{\titlepageInfo}{
+    \vspace{-1em}
+    \textbf{\fontsize{14pt}{18pt}\selectfont BỘ GIÁO DỤC VÀ ĐÀO TẠO\\TRƯỜNG ĐẠI HỌC CẦN THƠ\\TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=4cm, height=4cm]{images/ctu_logo.png}
+    \end{figure}
+
+    \vspace{2\baselineskip}
+    \textbf{\fontsize{20pt}{24pt}\selectfont ĐỒ ÁN\\HỌC PHẦN MÁY HỌC ỨNG DỤNG}\\[3\baselineskip]
+
+    \textbf{\fontsize{20pt}{24pt}\selectfont Đề tài}\\[1\baselineskip]
+
+    \textbf{\fontsize{20pt}{24pt}\selectfont DỰ ĐOÁN MỨC TIÊU THỤ NĂNG LƯỢNG\\CỦA CÁC THIẾT BỊ ĐIỆN TRONG NHÀ} \\[3\baselineskip]
+}
+
+\begin{document}
+    %--- Trang bìa ---%
+    \begin{titlepage}
+        \drawborder
+        \begin{center}
+            \titlepageInfo
+            
+            \textbf{\fontsize{15pt}{19pt}\selectfont Nhóm sinh viên thực hiện:\\1. Trần Quang Minh - B2304069}
+            
+            \vfill
+            \textbf{\fontsize{16pt}{20pt}\selectfont Cần Thơ, 07/2025}
+        \end{center}
+    \end{titlepage}
+    \newpage
+
+    % Trang thông tin
+    \thispagestyle{empty}
+    \drawborder
+    \begin{center}
+        \titlepageInfo
+        
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{c @{\hspace{3em}} c}
+             \textbf{\fontsize{15pt}{19pt}\selectfont Giảng viên hướng dẫn:} & \textbf{\fontsize{15pt}{19pt}\selectfont Nhóm sinh viên thực hiện:} \\
+             \textbf{\fontsize{15pt}{19pt}\selectfont TS.Lưu Tiến Đạo}       & \textbf{\fontsize{15pt}{19pt}\selectfont 1. Trần Quang Minh - B2304069}
+            \end{tabular}
+        \end{table}
+
+        \vfill
+        \textbf{\fontsize{16pt}{20pt}\selectfont Cần Thơ, 07/2025}
+    \end{center}
+    \newpage
+
+    %--- Nhận xét của giảng viên ---%
+    \section*{NHẬN XÉT CỦA GIẢNG VIÊN}
+    \foreach \i in {1,...,19} {
+        \noindent\makebox[\textwidth]{\dotfill}\par
+    }
+    \begin{flushright}
+        \begin{minipage}{9cm}
+            \centering
+            \textit{Cần Thơ, ngày\hspace{1.9em}tháng\hspace{1.9em}năm} \\[0.3em]
+            (Ký và ghi rõ họ tên)
+        \end{minipage}
+    \end{flushright}
+    \newpage
+
+    %--- Mục lục ---%
+    \pagestyle{empty}
+    \renewcommand{\contentsname}{}
+    \section*{MỤC LỤC}
+    \vspace{-5em}
+    \tableofcontents      % Tạo mục lục tự động
+    \newpage
+
+    \pagestyle{fancy}
+
+    %--- Phân công công việc ---%
+    \section*{PHÂN CÔNG CÔNG VIỆC}
+    \phantomsection
+    \addcontentsline{toc}{section}{\numberline{} PHÂN CÔNG CÔNG VIỆC}
+    \begin{table}[H]
+        \centering
+        \begin{tabularx}{\textwidth}{|c|c|c|Y|c|}
+            \hline
+            \textbf{STT} & \textbf{Họ và tên} & \textbf{MSSV} & \textbf{Công việc} & \textbf{Đánh giá} \\ \hline
+            
+            1 & Trần Quang Minh & B2304069 & Khám phá và mô tả dữ liệu. Xây dựng và đánh giá mô hình. Triển khai ứng dụng web, tổng hợp code. Viết báo cáo, thiết kế PowerPoint. & 100\% \\ \hline
+        \end{tabularx}
+        \caption{Bảng phân công công việc}
+    \end{table}
+    \newpage
+
+    \section*{PHẦN NỘI DUNG}
+    \phantomsection
+    \addcontentsline{toc}{section}{\numberline{} PHẦN NỘI DUNG}
+        \subfile{content.tex}
+    \newpage
+
+    \section*{PHẦN KẾT LUẬN}
+    \phantomsection
+    \addcontentsline{toc}{section}{\numberline {} PHẦN KẾT LUẬN}
+        \subfile{conclusion.tex}
+    \newpage
+
+    \section*{TÀI LIỆU THAM KHẢO}
+    \phantomsection
+    \addcontentsline{toc}{section}{\numberline {} TÀI LIỆU THAM KHẢO}
+    \renewcommand{\refname}{}
+    \vspace{-4em}
+    \begin{thebibliography}{9}
+        \bibitem{ref1}
+        Candanedo, L. M., Feldheim, V., \& Deramaix, D. (2017). \textit{Data driven prediction models of energy use of appliances in a low-energy house}. Energy and Buildings, 140, 81-97.\\
+        \url{https://doi.org/10.1016/j.enbuild.2017.01.083}
+        
+        \bibitem{ref2}
+        UCI Machine Learning Repository. Appliances energy prediction dataset.\\
+        \url{https://archive.ics.uci.edu/dataset/374/appliances+energy+prediction}
+        
+        \bibitem{ref3}
+        Trần Nguyễn Minh Thư. Slides bài giảng môn Máy học ứng dụng.
+    \end{thebibliography}
+    
+\end{document}
