@@ -1,6 +1,7 @@
 \subsection{Mô tả bài toán}
-Bài toán được đặt ra trong báo cáo này là xây dựng được một mô hình dự đoán, dùng để ước lượng được mức tiêu thụ năng lượng của các thiết bị gia dụng trong một ngôi nhà. Mục tiêu là dự đoán gần chính xác mức tiêu thụ năng lượng dựa trên dữ liệu được thu thập từ các cảm biến nhiệt độ và độ ẩm đặt trong nhà, thông tin thời tiết từ trạm thời tiết gần nhất và dữ liệu tiêu thụ năng lượng của hệ thống chiếu sáng, đồng thời xác định được các yếu tố nào là hiệu quả nhất cho việc dự đoán. Mô hình này nhằm hỗ trợ các ứng dụng quản lý năng lượng, tối ưu hoá hệ thống chiếu sáng, và cải thiện hiệu quả sử dụng năng lượng trong các toà nhà, góp phần nâng cao hiệu quả sử dụng năng lượng trong các khu dân cư.
+Trong bối cảnh nhu cầu về quản lý năng lượng hiệu quả, tối ưu hoá hệ thống chiếu sáng và cải thiện hiệu quả sử dụng năng lượng trong các toà nhà ngày càng tăng, thì việc xây dựng một mô hình dự đoán mức tiêu thụ năng lượng của các thiết bị gia dụng trở nên cấp thiết. Các ứng dụng này không chỉ giúp nâng cao hiệu quả sử dụng năng lượng trong các khu dân cư mà còn góp phần làm giảm chi phí vận hành và hạn chế tác động tiêu cực đến môi trường.
 
+Để đáp ứng những yêu cầu trên, bài toán được đặt ra là phát triển một mô hình dự đoán có khả năng ước lượng gần chính xác mức tiêu thụ năng lượng của các thiết bị gia dụng trong một ngôi nhà. Mô hình sẽ tận dụng dữ liệu lịch sử được thu thập từ các cảm biến nhiệt độ và độ ẩm được lắp trong nhà, thông tin thời tiết từ trạm thời tiết gần nhất, cùng với dữ liệu sử dụng năng lượng của hệ thống chiếu sáng. Mục tiêu không chỉ dừng lại ở việc dự đoán gần đúng mức tiêu thụ năng lượng mà còn là xác định các yếu tố ảnh hưởng đến mức tiêu thụ đó, từ đó cung cấp cơ sở cho việc quản lý và tối ưu hoá năng lượng một cách hiệu quả.
 \subsection{Mô tả dữ liệu}
 \begin{figure}[H]
     \centering
@@ -96,6 +97,7 @@ Gradient Boosting Machine được chọn vì khả năng vượt trội trong v
     \includegraphics[width=\linewidth]{images/computer.PNG}
     \caption{Cấu hình máy tính dùng để huấn luyện mô hình}
 \end{figure}
+Quá trình huấn luyện sử dụng máy tính có cấu hình 16 GB RAM, vi xử lý AMD Ryzen 5 3600 6-Core 3.59 GHz, card đồ họa NVDIA GeForce RTX 2060 SUPER 8 GB, và hệ điều hành Kali Linux.
 
 \subsection{Huấn luyện mô hình}
 Để đảm bảo độ tin cậy của kết quả đánh giá hiệu suất ban đầu trước khi đánh giá mô hình trên tập kiểm tra, tất cả các mô hình đều được huấn luyện bằng phương pháp kiểm định chéo 10-fold (10-fold cross-validation) với 3 lần lặp trên tập huấn luyện.
